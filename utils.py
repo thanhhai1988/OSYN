@@ -39,7 +39,7 @@ def check_area(s, index):
     I = index.search(s, 1)
     return I[1]
 
-def generator_dis(Pg_means, Pg_covs, weights, index, test_size):
+def generator_dis(Pg_means, Pg_covs, index, test_size, weights =  [0.2,0.2, 0.2, 0.2, 0.2]):
     """
     Returns distribution of generator on areas
     Pg = (Pg_1, ..., Pg_K)
@@ -375,7 +375,7 @@ def optim_per_Pg(a_scale, g, T, N, means, covs, weights,
 
   # Find P_g on K areas
   print('Section 1: Find distribution of Pg')
-  Pg_dis = generator_dis(means_changed, covs, weights,
+  Pg_dis = generator_dis(means_changed, covs,
                          index, test_size)
   print('-------------End of Section 1 -----------------------')
 
