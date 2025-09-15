@@ -19,7 +19,7 @@ DELTA2=0.2
 A_S_VALUES=("-0.25" "-0.5" "-0.75")
 
 # ---- Loop chạy nhiều thí nghiệm ----
-python main.py \
+python main_Gen_Quality.py \
         --train_size=$TRAIN_SIZE \
         --test_size=$TEST_SIZE \
         --oracle_size=$ORACLE_SIZE \
@@ -32,4 +32,5 @@ python main.py \
         --save_path=$SAVE_PATH \
         --opt_data_path=$OPT_DATA_PATH \
         --delta1=$DELTA1 \
+
         --delta2=$DELTA2
