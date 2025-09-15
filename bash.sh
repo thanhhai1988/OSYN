@@ -5,17 +5,17 @@ ORACLE_SIZE=20000
 SEED=0
 
 G=50000
-K=3
-T=10
+K=5
+T=15
 N=50000
 
-SAVE_PATH="/content/OSYN/Results/"
-OPT_DATA_PATH="/content/OSYN/Opt_data/"
+SAVE_PATH="/OSYN/Results/"
+OPT_DATA_PATH="/OSYN/Opt_data/"
 
 DELTA1=0.01
 DELTA2=0.2
 
-A_S_VALUES="[-0.25, -0.5, -0.75]"
+A_S_VALUES="[0,  -0.25, -0.5, -0.75, -1, -1.125, -1.25, -1.5, -1.75, -2]"
 
 #Run
 !python main_Gen_Quality.py \
@@ -32,3 +32,4 @@ A_S_VALUES="[-0.25, -0.5, -0.75]"
         --opt_data_path=$OPT_DATA_PATH \
         --delta1=$DELTA1 \
         --delta2=$DELTA2
+
