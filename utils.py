@@ -53,7 +53,7 @@ def generator_dis(Pg_means, Pg_covs, index, test_size, weights =  [0.2,0.2, 0.2,
     count_sum = 0
     T_dis = 20
     for no_iter in range(T_dis):
-        N = 50000 # Tổng số pt sinh mỗi lần lặp
+        N = 50000 # Total synthetic points to filter/epoch
         # Thay doi Pg: 1) Pg = P_ori; Pg = P_1; Pg = P_2
         samples, labels = sample_GMM(N, Pg_means, Pg_covs, weights)
         for k in range(N):
@@ -304,7 +304,7 @@ def check_point_shortage(L01_loss_area, g_adj_short, Pg_dis, Ng_adj_short,  a_sc
             y_syn =  df_area.iloc[:, -1]
             y_syn_label = LabelEncoder_Custom(y_syn.values) # Label Encoder: y = 0, 1, 2, 3, 4
 
-            # Calulate epsilon value for each kind of loss for chung opt. data
+            # Calulate epsilon value 
             for i in range(df_area.shape[0]):
                 epsilon_value_L01 = np.abs(L01_element(X_syn.iloc[[i]], y_syn_label[i],clf)
                           - L01_element(X.iloc[[area_idx]], y[area_idx], clf))
@@ -418,22 +418,22 @@ def optim_per_Pg(a_scale, g, T, N, means, covs, weights,
        df_area = df_gen_overall.iloc[data[str(area_idx)]]
 
        # Cập nhật n
-       n = df_area.shape[0] # Số phần tử vừa sinh Ở bước hiện tại thuộc vùng
+       n = df_area.shape[0] # Size of synthetic points/current area
 
        X_syn =  df_area.iloc[:, :-1]
        y_syn =  df_area.iloc[:, -1]
        y_syn_label = LabelEncoder_Custom(y_syn.values) # Label Encoder: y = 0, 1, 2, 3, 4
 
-       # Cập nhật g
-       no_syn[area_idx] = no_syn[area_idx] + n # Tổng số phần tử đã sinh thuộc vùng ĐẾN bước hiện tại
-       # Cập nhật Dãy loss của các vùng
+       # Update no of total synthetic points
+       no_syn[area_idx] = no_syn[area_idx] + n # Total synthetic points to current step
+       # Update loss set
        for j in range(n):
             L01_loss_area[str(area_idx)].append(L01_element(X_syn.iloc[[j]], y_syn_label[j], clf))
-       # Cập nhật tập tìm kiếm điểm tối ưu
+       # Update search set
 
-       search_df = pd.concat([df_gen, df_area], axis = 0) # Hợp của tập sinh tốt ở bước trước và tập vừa sinh ở bước hiện tại
+       search_df = pd.concat([df_gen, df_area], axis = 0) 
 
-       # Tìm no_syn_opt[area] điểm sinh tối ưu
+       # Find no_syn_opt[area] 
        targets = []
        X_search =  search_df.iloc[:, :-1]
        y_search =  search_df.iloc[:, -1]       
@@ -448,7 +448,7 @@ def optim_per_Pg(a_scale, g, T, N, means, covs, weights,
        targets = targets.reshape(-1)
 
        # Get the indices of the k smallest elements
-       if search_df.shape[0] <= no_syn_adj[area_idx]: # Nếu số phần tử thuộc vùng sinh nhỏ hơn g_optim thì lấy toàn bộ làm tập tối ưu
+       if search_df.shape[0] <= no_syn_adj[area_idx]: 
              df_gen = search_df
        else:
              idx_min = np.argpartition(targets, no_syn_adj[area_idx])[:no_syn_adj[area_idx]]
@@ -519,21 +519,3 @@ def optim_per_Pg(a_scale, g, T, N, means, covs, weights,
       print(results)
       save_results(save_root, results, a_scale, no_iter)
   return results['lower_bound']
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
