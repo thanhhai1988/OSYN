@@ -35,8 +35,7 @@ def create_test_dataset(means, covs, class_id, size, seed = 0):
     Output: a dataframe of 3 columns: [x1,x2, class_id]
     -------
     """
-    #np.random.seed(seed)
-    np.random.seed(20)
+    np.random.seed(seed)
     X = np.random.multivariate_normal(means[class_id], 
                                       covs[class_id], 
                                       size)
@@ -46,3 +45,4 @@ def create_test_dataset(means, covs, class_id, size, seed = 0):
     return df
 
     
+
