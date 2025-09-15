@@ -111,8 +111,13 @@ def OSYN_Gen_Quality():
         # Save results
         row = pd.DataFrame(data = [[a_value, LB, gap]], columns = ['a_scale', 'LB', 'Gap'])
         df_results = pd.concat([df_results, row], axis = 0)
-        
+    df_results = df_results.reset_index(drop=True)
+    df_distance = df_distance.reset_index(drop=True)
+    df_results = pd.concat([df_results,df_distance], axis = 1)
+    os.makedirs(f'{args.save_path}Final_results/', exist_ok=True)
+    df_results.to_csv(f'{args.save_path}Final_results/df_results.csv', index = False)
 if __name__ == "__main__":
         OSYN_Gen_Quality()
         
+
 
