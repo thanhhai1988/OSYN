@@ -116,8 +116,10 @@ def OSYN_Gen_Quality():
     df_results = pd.concat([df_results,df_distance], axis = 1)
     os.makedirs(f'{args.save_path}Final_results/', exist_ok=True)
     df_results.to_csv(f'{args.save_path}Final_results/df_results.csv', index = False)
+    print('OSYN done!')
 if __name__ == "__main__":
         OSYN_Gen_Quality()
         
+
 
 
