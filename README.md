@@ -4,5 +4,5 @@ This is the code implementation for simualtion data in the paper __"Using Synthe
 In this experiment, we simualte 2D Gaussian Mixture data and shift the means with different scales to depict the changed generators. 
 
 # Running
-Please follow the example in the bash folder for running
+Please follow the example in the bash file for running.
 
