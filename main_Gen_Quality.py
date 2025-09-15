@@ -83,9 +83,9 @@ def OSYN_Gen_Quality():
     os.makedirs(args.save_path, exist_ok=True)
     os.makedirs(args.opt_data_path, exist_ok=True)
     
-    D_train =  create_GM_dataset(args.means, args.covs, args.weights, args.train_size, args.seed)
-    D_oracle = create_GM_dataset(args.means, args.covs, args.weights, args.oracle_size, seed = args.seed+10)
-    D_test = create_test_dataset(args.means, args.covs, 0, args.test_size, seed = args.seed + 20)
+    D_train =  create_GM_dataset(args.means, args.covs, args.weights, args.train_size, seed = 2)
+    D_oracle = create_GM_dataset(args.means, args.covs, args.weights, args.oracle_size, seed = 4)
+    D_test = create_test_dataset(args.means, args.covs, 0, args.test_size, seed = 20)
     D_columns = D_oracle.columns
     df_results = pd.DataFrame(columns = ['a_scale', 'LB', 'Gap'])
 
@@ -115,3 +115,4 @@ def OSYN_Gen_Quality():
 if __name__ == "__main__":
         OSYN_Gen_Quality()
         
+
