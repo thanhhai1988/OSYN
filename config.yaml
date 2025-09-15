@@ -10,10 +10,11 @@ seed: 0
 a_s: [0, -0.25, -0.5, -0.75, -1, -1.125, -1.25, -1.5, -1.75, -2]
 Delta_mean: [[1, 0], [1, 0], [1, 0], [1, 0], [1, 0]]
 g: 50000
-k: 3
-T: 10
+k: 5
+T: 15
 N: 50000
-save_path: "/content/OSYN/Results/"
-opt_data_path: "/content/OSYN/Opt_data/"
+save_path: "/OSYN/Results/"
+opt_data_path: "/OSYN/Opt_data/"
 delta1: 0.01
 delta2: 0.2
+
