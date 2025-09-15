@@ -15,16 +15,15 @@ OPT_DATA_PATH="/content/OSYN/Opt_data/"
 DELTA1=0.01
 DELTA2=0.2
 
-# ---- Ví dụ sweep qua nhiều giá trị a_s ----
-A_S_VALUES=("-0.25" "-0.5" "-0.75")
+A_S_VALUES="[-0.25, -0.5, -0.75]"
 
-# ---- Loop chạy nhiều thí nghiệm ----
-python main_Gen_Quality.py \
+#Run
+!python main_Gen_Quality.py \
         --train_size=$TRAIN_SIZE \
         --test_size=$TEST_SIZE \
         --oracle_size=$ORACLE_SIZE \
         --seed=$SEED \
-        --a_s $A_S \
+        --a_s "$A_S_VALUES"\
         --g=$G \
         --k=$K \
         --T=$T \
@@ -32,5 +31,4 @@ python main_Gen_Quality.py \
         --save_path=$SAVE_PATH \
         --opt_data_path=$OPT_DATA_PATH \
         --delta1=$DELTA1 \
-
         --delta2=$DELTA2
