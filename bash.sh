@@ -5,7 +5,7 @@ ORACLE_SIZE=20000
 SEED=0
 
 G=50000
-K=5
+K=6
 T=15
 N=50000
 
@@ -32,4 +32,5 @@ A_S_VALUES="[0,  -0.25, -0.5, -0.75, -1, -1.125, -1.25, -1.5, -1.75, -2]"
         --opt_data_path=$OPT_DATA_PATH \
         --delta1=$DELTA1 \
         --delta2=$DELTA2
+
 
